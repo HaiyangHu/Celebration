@@ -1,0 +1,14 @@
+.nav-item {
+	margin-bottom: 20px;
+}
+
+.left-line {
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+}
+.content {
+	margin-top: 10px;
+	font-size: 20px;
+	text-indent: 2em;
+	font-family: 华文行楷
+}
