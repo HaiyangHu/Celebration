@@ -17,23 +17,26 @@
 			}
 			.name {
 				 display:block;
-				 bottom:0px;
-				 right:0px;
+				 bottom:5%;
+				 left:45%;
 				 position:fixed;
 				 text-align:right;
+			}
+
+			.circle {
+				border-radius: 50%;
+				height: 50px;
+				width: 50px;
+				border-width: 1px
 			}
 		</style>
 		<script type="text/javascript">
 			$(function () {
 				var width = $(document).width()
+
 				var header = $("#header")
 				var xhWidth = $("#xiaohui").width()
 				var length = (width) / 5
-
-				for(var item in $(document)) {
-					console.log(item)
-				}
-				console.log("document width : " + width + " xiaohui width : " + xhWidth + " length : " + length)
 
 				header.append("<div style='float:left'><img src='img/wave.png' width='" + length + "' height='88'/></div>")
 
@@ -53,13 +56,40 @@
 					console.log("append " + i)
 				}
 
+				var images = ["background.png", "two.png", "three.png", "four.png", "five.png"]
+				var index = 0
+				$("#previous").click(function () {
+					if (index == 0) {
+						index = 4
+					} else {
+						index = index - 1
+					}
+					changeBackground(index)
+				})
 
+				$("#next").click(function () {
+					if (index == 4) {
+						index = 0
+					} else {
+						index = index + 1
+					}
+					changeBackground(index)
+				})
+
+				function changeBackground(index) {
+					if (index == 0) {
+						$("#header").show(100)
+					} else {
+						$("#header").hide(100)
+					}
+					$("#background-img").attr("src", "img/" + images[index])
+				}
 			})
 		</script>
 	</head>
 	<body style="overflow:hidden">
 		<div id="background" style="position:absolute; width:100%; height:100%; z-index:-1">    
-			<img src="img/title-background.png" height="100%" width="100%"/>    
+			<img src="img/background.png" id="background-img" height="100%" width="100%"/>    
 		</div>
 		<div id="header">
 			<div style="float:left">
@@ -67,7 +97,11 @@
 			</div>
 		</div>
 		<div id="name" class="name">
-			<img src="img/xiaoming.png"/>
+			<!-- <img src="img/xiaoming.png"/> -->
+			
+			  <button id="previous" class="circle"><span class="glyphicon glyphicon-chevron-left"></span></button>
+			  <button id="next" class="circle"><span class="glyphicon glyphicon-chevron-right"></span></button>
+			
 		</div>
 	</body>
 </html>
